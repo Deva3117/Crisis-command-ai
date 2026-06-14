@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Crisis Command AI</title>
+
+  <!-- STYLE -->
+  <link rel="stylesheet" href="style.css">
+ 
+  <!-- LEAFLET -->
+ <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- ROLE SCREEN -->
+<!-- ========================= -->
+
+<div id="roleScreen" class="screen active">
+
+  <div class="hero">
+
+    <h1>Crisis Command AI</h1>
+
+    <p>
+      Global AI Powered Emergency Coordination Network
+    </p>
+
+  </div>
+
+  <div class="roleContainer">
+
+    <div class="roleCard"
+    onclick="openVictimForm()">
+
+      <h2>Need Help</h2>
+
+      <p>
+        Request emergency rescue, food,
+        shelter or medicine
+      </p>
+
+    </div>
+
+   <div class="roleCard"
+onclick="openContributeScreen()">
+
+  <h2>🤝 Contribute & Respond</h2>
+
+  <p>
+    Join disaster response efforts
+    as a volunteer, rescue team
+    or donor.
+  </p>
+
+</div>
+
+  </div>
+
+</div>
+
+<div id="contributeScreen"
+class="screen">
+
+  <div class="hero">
+
+    <h1>Contribute & Respond</h1>
+
+    <p>
+      Support disaster response efforts
+    </p>
+
+  </div>
+
+  <div class="roleContainer">
+
+    <div class="roleCard"
+    onclick="window.open(
+'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAYuLUUxUNzI2UTBBUjVaWkc3QThVQzFWR1JRSVJBSS4u',
+'_blank')">
+
+      <h2>👥 Volunteer</h2>
+
+      <p>
+        Register as an individual
+        volunteer.
+      </p>
+
+    </div>
+
+    <div class="roleCard"
+    onclick="openTeamForm()">
+
+      <h2>🚑 Rescue Team</h2>
+
+      <p>
+        Register your rescue unit.
+      </p>
+
+    </div>
+
+    <div class="roleCard"
+    onclick="openReliefFund()">
+
+      <h2>💰 Relief Fund</h2>
+
+      <p>
+        Donate to support victims.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div id="reliefFundScreen" class="screen">
+
+  <h2>💰 Relief Fund Center</h2>
+
+ <div class="panel">
+
+  <h3>🌊 Flood Relief</h3>
+
+  <p>Families Affected: 120</p>
+
+  <p>Target Fund: ₹2,00,000</p>
+
+  <p>Raised So Far: ₹75,000</p>
+  <p>
+  💝Donate any amount to help affected families
+  </p>
+
+  <button
+class="dangerBtn"
+onclick="
+document.getElementById(
+'donationPopup'
+).style.display='block'">
+
+Donate Now
+
+</button>
+
+</div>
+
+<div class="panel">
+
+  <h3>🔥 Fire Relief</h3>
+
+  <p>Families Affected: 35</p>
+
+  <p>Target Fund: ₹1,50,000</p>
+
+  <p>Raised So Far: ₹40,000</p>
+  <p>
+  💝Donate any amount to help affected families
+  </p>
+
+
+  <button
+class="dangerBtn"
+onclick="
+document.getElementById(
+'donationPopup'
+).style.display='block'">
+
+Donate Now
+
+</button>
+
+</div>
+
+<div class="panel">
+
+  <h3>🌪 Cyclone Relief</h3>
+
+  <p>Families Affected: 80</p>
+
+  <p>Target Fund: ₹3,00,000</p>
+
+  <p>Raised So Far: ₹1,10,000</p>
+  <p>
+  💝Donate any amount to help affected families
+  </p>
+
+
+  <button
+class="dangerBtn"
+onclick="
+document.getElementById(
+'donationPopup'
+).style.display='block'">
+
+Donate Now
+
+</button>
+</div>
+
+  </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- VICTIM FORM -->
+<!-- ========================= -->
+
+<div id="victimForm" class="screen">
+
+  <div class="formCard">
+
+    <h2>Victim Registration</h2>
+
+    <input
+    id="victimName"
+    placeholder="Full Name">
+
+    <input
+    id="victimPhone"
+    type="tel"
+    maxlength="10"
+    placeholder="Phone Number">
+
+    <input
+    id="peopleCount"
+    type="number"
+    placeholder="Number Of People">
+
+    <button onclick="enterVictimDashboard()">
+      Continue
+    </button>
+
+  </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- TEAM FORM -->
+<!-- ========================= -->
+
+<div id="teamForm" class="screen">
+
+  <div class="formCard">
+
+    <h2>Rescue Team Registration</h2>
+
+    <input
+    id="teamName"
+    placeholder="Team Name">
+
+    <input
+    id="teamPhone"
+    type="tel"
+    maxlength="10"
+    placeholder="Phone Number">
+
+    <button onclick="enterTeamDashboard()">
+      Continue
+    </button>
+
+  </div>
+
+</div>
+<!-- ========================= -->
+<!-- RESPONSE DASHBOARD -->
+<!-- ========================= -->
+<div id="responseDashboard" class="screen">
+
+
+  <div style="
+  display:flex;
+  height:100vh;
+  ">
+
+    <!-- LEFT MENU -->
+
+    <div style="
+    width:260px;
+    background:#111827;
+    padding:20px;
+    ">
+
+     <h2 id="rescueCenterTitle">
+
+🚑 Rescue Center
+
+</h2>
+
+<button onclick="openRescuePanel('missionsTab')">
+🚨 Active Missions
+</button>
+
+<br><br>
+
+<button onclick="openRescuePanel('teamsTab')">
+👥 Teams
+</button>
+
+<br><br>
+
+<button onclick="openRescuePanel('sosTab')">
+📡 SOS Feed
+</button>
+
+<br><br>
+
+<button onclick="openRescuePanel('mapTab')">
+🗺 Route Map
+</button>
+
+<br><br>
+
+<button onclick="openRescuePanel('accessibilityTab')">
+♿ Accessibility
+</button>
+
+<br><br>
+
+<button onclick="openRescuePanel('aiAdvisorCenter')">
+🤖 Crisis Command AI
+</button>
+
+<br><br>
+
+<button onclick="openRescuePanel('departmentsTab')">
+🏛 Department Search
+</button>
+
+</div>
+
+<!-- RIGHT CONTENT -->
+
+    <div style="
+    flex:1;
+    padding:20px;
+    overflow:auto;
+    ">
+
+      <div id="missionsTab" class="rescuePanel" style="display:none">
+
+
+        <div id="responseRequests"></div>
+
+      </div>
+
+      <div id="aiAdvisorCenter" class="rescuePanel" style="display:none">
+
+<div class="panel"
+style="
+width:500px;
+min-height:600px;
+margin:auto;
+">
+
+<h2>🤖 Crisis Command AI</h2>
+
+<div id="aiAdvisorText">
+
+<h3>🧠 Situation Analysis</h3>
+
+<p>Awaiting live emergency data...</p>
+
+<hr>
+
+<h3>⚠ Risk Assessment</h3>
+
+<p>No active high-risk incidents detected.</p>
+
+<hr>
+
+<h3>🏛 Recommended Departments</h3>
+
+<ul>
+
+<li>💧 Water Department</li>
+
+<li>🛣 Civil Department</li>
+
+<li>🏥 Health Department</li>
+
+</ul>
+
+<hr>
+
+<h3>🚑 Suggested Actions</h3>
+
+<ul>
+
+<li>Monitor rescue operations</li>
+
+<li>Prepare evacuation routes</li>
+
+<li>Monitor water quality</li>
+
+</ul>
+
+<hr>
+
+<h3>📊 Operational Status</h3>
+
+Mission Readiness:
+<span style="color:#22c55e;">
+HIGH
+</span>
+
+</div>
+
+</div>
+
+</div>
+<div id="teamsTab" class="rescuePanel" style="display:none">
+
+        <div class="panel">
+
+          Team Bravo 🟢 Available
+
+          <br><br>
+
+          Team Charlie 🟢 Available
+
+        </div>
+
+      </div>
+<div id="sosTab" class="rescuePanel" style="display:none">
+      
+
+        <div id="sosAlertsPanel"></div>
+
+      </div>
+<div id="mapTab" class="rescuePanel" style="display:none">
+
+<div class="panel">
+
+<h3>🗺 Rescue Route Map</h3>
+
+<div id="routeMapContainer">
+
+<p>
+Select an emergency mission to generate route.
+</p>
+
+</div>
+
+</div>
+
+</div>
+<div id="accessibilityTab" class="rescuePanel" style="display:none">
+
+
+<div class="panel">
+
+<h2>♿ Accessibility Center</h2>
+
+<button onclick="startVoiceReadout()">
+
+🔊 Voice Assistant
+
+</button>
+
+<br><br>
+
+<button onclick="toggleLargeText()">
+
+👁 Large Text
+
+</button>
+
+<br><br>
+
+<button onclick="toggleHighContrast()">
+
+🎨 High Contrast
+
+</button>
+
+<br><br>
+
+<button onclick="toggleVibration()">
+
+📳 Vibration Alerts
+
+</button>
+
+<br><br>
+
+<select
+id="languageSelect"
+onchange="changeLanguage()">
+
+<option value="english">
+English
+</option>
+
+<option value="tamil">
+Tamil
+</option>
+
+<option value="hindi">
+Hindi
+</option>
+
+<option value="kannada">
+Kannada
+</option>
+
+<option value="telugu">
+Telugu
+</option>
+
+<option value="malayalam">
+Malayalam
+</option>
+
+</select>
+
+<br><br>
+
+
+
+<button onclick="toggleSignGuide()">
+
+🤟 Sign Language Guide
+
+</button>
+
+<div id="signGuidePanel"
+style="display:none;">
+
+<div class="panel">
+
+<h3>🆘 Emergency Sign Guide</h3>
+
+<p>🆘 SOS → Need Immediate Help</p>
+
+<p>🏥 Medical → Need Doctor</p>
+
+<p>💧 Water → Need Water</p>
+
+<p>🍞 Food → Need Food</p>
+
+<p>🏠 Shelter → Need Shelter</p>
+
+<p>🚨 Evacuate → Leave Area</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+<div id="departmentsTab" class="rescuePanel" style="display:none">
+
+<div class="panel">
+
+<h3>🔍 Department Search</h3>
+
+<input
+id="departmentSearch"
+placeholder="Search Department...">
+
+<br><br>
+
+<button onclick="openDepartment()">
+Open Department
+</button>
+
+<br><br>
+
+<div id="departmentResult"></div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- ========================= -->
+<!-- MAIN APP -->
+<!-- ========================= -->
+
+<div id="appScreen" class="screen">
+
+  <!-- SIDEBAR -->
+
+  <div class="sidebar">
+
+    <div class="logo">
+      Crisis Command AI
+    </div>
+
+    <div class="navItem"
+    onclick="showPage('dashboardPage')">
+      Dashboard
+    </div>
+
+    <div class="navItem"
+    onclick="showPage('emergencyPage')">
+      Emergency Center
+    </div>
+
+    <div class="navItem"
+onclick="showPage('predictionPage')">
+
+🌧 Prediction Center
+
+</div>
+
+    <div class="navItem"
+onclick="showPage('reliefFundPage')">
+
+💰 Relief Fund
+
+</div>
+
+    <div class="navItem"
+    onclick="showPage('resourcePage')">
+      Resource Requests
+    </div>
+
+    <div class="navItem"
+    onclick="showPage('chatPage')">
+      Mission Chat
+    </div>
+
+    <div class="navItem"
+onclick="showPage('lostFoundPage')">
+
+  🧳 Lost & Found Recovery Center
+
+</div>
+
+    <div class="navItem"
+    onclick="showPage('operationsPage')">
+      Operations Map
+    </div>
+   <div class="navItem"
+ onclick="showPage('notificationPage')">
+
+  🔔 Notifications
+
+  <span id="notificationCount">
+    (0)
+  </span>
+
+</div>
+
+  </div>
+
+  <!-- MAIN CONTENT -->
+
+  <div class="mainContent">
+
+    <!-- DASHBOARD -->
+
+    
+      <div id="dashboardPage"
+class="page activePage">
+
+  <h2>Global Operations Dashboard</h2>
+
+  <div class="grid">
+
+    <div class="panel">
+      <h3>Active Emergencies</h3>
+      <div id="emergencyCount">0</div>
+    </div>
+
+    <div class="panel">
+      <h3>Active Rescue Teams</h3>
+      <div id="teamCount">0</div>
+    </div>
+
+    <div class="panel">
+      <h3>Resource Requests</h3>
+      <div id="resourceCount">0</div>
+    </div>
+
+  </div>
+  <div class="panel">
+
+  <h3>🚑 Rescue Team Status</h3>
+
+  <div id="teamStatus">
+
+    Team Alpha 🟢 Available<br>
+    Team Bravo 🟢 Available<br>
+    Team Charlie 🟢 Available
+
+  </div>
+
+</div>
+
+  <!-- Recent Incidents -->
+
+  <div class="incident-panel">
+
+    <h3>Recent Incidents</h3>
+
+    <div id="incidentHistory">
+
+      No incidents yet
+    
+    </div>
+
+  </div>
+
+
+    </div>
+
+    <!-- EMERGENCY -->
+
+    <div id="emergencyPage"
+    class="page">
+
+      <h2>Emergency Response</h2>
+
+      <div id="emergencyFormPanel"
+      class="panel">
+
+  <h3>Emergency Request Form</h3>
+
+  <input
+  id="emergencyPeople"
+  type="number"
+  placeholder="Number of People">
+
+  <br><br>
+
+  <textarea
+id="emergencyDescription"
+placeholder="Describe the emergency, injuries ">
+</textarea>
+
+  <br><br>
+
+  <button
+  class="dangerBtn"
+  onclick="submitEmergency()">
+
+    Submit Emergency
+
+  </button>
+
+</div>
+
+      <div id="emergencyStatus"></div>
+
+    </div>
+
+    <div id="predictionPage"
+class="page">
+
+<h2>
+🌧 AI Disaster Prediction Center
+</h2>
+
+<div class="panel">
+
+<h3>🌧 Live Weather Prediction</h3>
+
+<input
+id="predictionCity"
+placeholder="Enter city">
+
+<br><br>
+
+<button
+class="dangerBtn"
+onclick="getWeatherPrediction()">
+
+Check Prediction
+
+</button>
+
+<div id="predictionResult">
+
+</div>
+
+</div>
+
+</div>
+
+
+
+    <!-- RESOURCE PAGE -->
+
+    <div id="resourcePage"
+    class="page">
+
+      <h2>Resource Request Center</h2>
+
+      <div class="resourceGrid">
+
+        <div class="resourceCard"
+        onclick="openResourceRequest('Food')">
+
+          Food Support
+
+        </div>
+
+        <div class="resourceCard"
+        onclick="openResourceRequest('Shelter')">
+
+          Shelter Support
+
+        </div>
+
+        <div class="resourceCard"
+        onclick="openResourceRequest('Medicine')">
+
+          Medical Support
+
+        </div>
+
+
+        <div class="resourceCard"
+        onclick="openResourceRequest('Clothes')">
+
+          Clothes Support
+
+        </div>
+
+      </div>
+
+    </div>
+    <div id="lostFoundPage"
+class="page">
+
+  <h2>🧳 Lost & Found Recovery Center</h2>
+
+  <input
+  id="searchLostItem"
+  placeholder="Search Lost Items..."
+  onkeyup="searchLostItems()">
+
+  <br></br>
+
+
+  <div class="panel">
+
+    <input
+    id="itemName"
+    placeholder="Item Name">
+
+    <br><br>
+
+    <input
+id="itemCategory"
+placeholder="Category">
+
+<br><br>
+
+<textarea
+id="itemDescription"
+placeholder="Describe the item">
+</textarea>
+
+<br><br>
+<input
+type="file"
+id="itemPhoto">
+
+<br><br>
+
+    <input
+    id="finderName"
+    placeholder="Finder Name">
+
+    <br><br>
+
+    <input
+    id="finderPhone"
+    placeholder="Phone Number">
+
+    <br><br>
+
+    <input
+    id="foundLocation"
+    placeholder="Location Found">
+
+    <br><br>
+
+    <button
+    class="dangerBtn"
+    onclick="submitFoundItem()">
+
+      Submit Found Item
+
+    </button>
+
+  </div>
+
+  <div id="foundItemsList"></div>
+
+</div>
+
+<div id="reliefFundPage" class="page">
+
+  <h2>💰 Relief Fund Center</h2>
+
+ <div class="panel">
+
+  <h3>🌊 Flood Relief</h3>
+
+  <p>Families Affected: 120</p>
+
+  <p>Target Fund: ₹2,00,000</p>
+
+  <p>Raised So Far: ₹75,000</p>
+  <p>
+  💝Donate any amount to help affected families
+  </p>
+
+  <button
+class="dangerBtn"
+onclick="
+document.getElementById(
+'donationPopup'
+).style.display='block'">
+
+Donate Now
+
+</button>
+
+</div>
+
+<div class="panel">
+
+  <h3>🔥 Fire Relief</h3>
+
+  <p>Families Affected: 35</p>
+
+  <p>Target Fund: ₹1,50,000</p>
+
+  <p>Raised So Far: ₹40,000</p>
+  <p>
+  💝Donate any amount to help affected families
+  </p>
+
+
+  <button
+class="dangerBtn"
+onclick="
+document.getElementById(
+'donationPopup'
+).style.display='block'">
+
+Donate Now
+
+</button>
+
+</div>
+
+<div class="panel">
+
+  <h3>🌪 Cyclone Relief</h3>
+
+  <p>Families Affected: 80</p>
+
+  <p>Target Fund: ₹3,00,000</p>
+
+  <p>Raised So Far: ₹1,10,000</p>
+  <p>
+  💝Donate any amount to help affected families
+  </p>
+
+
+  <button
+class="dangerBtn"
+onclick="
+document.getElementById(
+'donationPopup'
+).style.display='block'">
+
+Donate Now
+
+</button>
+</div>
+
+  </div>
+
+</div>
+
+
+    <div id="notificationPage"
+class="page">
+
+  <h2>Notifications</h2>
+
+  <div id="notificationList">
+
+    No notifications yet
+
+  </div>
+
+  </div>
+
+
+    <!-- CHAT -->
+
+    <div id="chatPage"
+    class="page">
+
+      <h2>Mission Communication</h2>
+
+      <div id="chatBox"></div>
+
+      <div class="chatControls">
+
+        <input
+        id="chatInput"
+        placeholder="Enter message">
+
+        <button onclick="sendMessage()">
+          Send
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- MAP -->
+
+    <div id="operationsPage"
+    class="page">
+
+      <h2>Global Operations Map</h2>
+
+      <div id="map"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div id="donationPopup"
+class="panel"
+style="display:none;">
+
+  <h3>💰 Donation Portal</h3>
+
+  <p>
+    You can donate any amount to support disaster victims.
+  </p>
+
+ <p>
+Donate any amount to support disaster victims.
+
+₹10 • ₹100 • ₹500 • ₹1000 • Custom Amount
+
+UPI / GPay integration coming soon.
+</p>
+
+<input
+id="donationAmount"
+placeholder="Enter Amount">
+
+<br><br>
+
+<button
+class="dangerBtn"
+onclick="startDonation()">
+
+Proceed to Donate
+
+</button>
+
+<br><br>
+
+<button
+class="dangerBtn"
+onclick="
+document.getElementById(
+'donationPopup'
+).style.display='none'">
+
+Close
+
+</button>
+
+</div>
+
+
+
+<script src="app.js"></script>
+<script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getDatabase,
+  ref,
+  set,
+  push,
+  onValue,
+  get
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import {
+  getStorage,
+  ref as storageRef,
+  uploadBytes,
+  getDownloadURL
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+  const firebaseConfig = {
+    
+    
+  apiKey: "AIzaSyC29z0zASJ9jl6-EEp56XFc4T0NKJCGyjI",
+  authDomain: "crisis-command-ai-global.firebaseapp.com",
+  databaseURL: "https://crisis-command-ai-global-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "crisis-command-ai-global",
+  storageBucket: "crisis-command-ai-global.firebasestorage.app",
+  messagingSenderId: "1090671246301",
+  appId: "1:1090671246301:web:94564294be61386fcf9434"
+    
+    
+  };
+
+  const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const storage =
+getStorage(app);
+
+window.storage =
+storage;
+
+window.storageRef =
+storageRef;
+
+window.uploadBytes =
+uploadBytes;
+
+window.getDownloadURL =
+getDownloadURL;
+
+window.db = db;
+window.ref = ref;
+window.set = set;
+window.push = push;
+window.onValue = onValue;
+  
+
+</script>
+</body>
+</html>
