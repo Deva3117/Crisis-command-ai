@@ -1748,7 +1748,7 @@ document.getElementById(
 ).value;
 
 let apiKey =
-"eb3afa1506e81548cefc825c486322b6";
+"YOUR API KEY HERE";
 
 let url =
 `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
